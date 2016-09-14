@@ -28,7 +28,7 @@ public class DAO {
 		try {
 
 			PreparedStatement sql = connetion
-					.prepareStatement("SELECT source, target, road_id, cost FROM grafoteste");
+					.prepareStatement("SELECT source, target, road_id FROM grafoteste");
 			rs = sql.executeQuery();
 			
 			while (rs.next()) {
@@ -37,7 +37,6 @@ public class DAO {
 				element.setSource(rs.getString("source"));
 				element.setTarget(rs.getString("target"));
 				element.setEdge(rs.getString("road_id"));
-				element.setDistance(rs.getDouble("cost"));
 				
 				elements.add(element);
 

@@ -8,6 +8,7 @@ public class ManipulatorR implements IManipulatorEngine {
 	private static final String RSCRIPT = "C:/Program Files/R/R-3.2.2/bin/Rscript.exe";
 	
 	private double[][] data;
+	public double yFinal = 0;
 
 	public ManipulatorR(double[][] coleta) {
 		this.data = coleta;
@@ -43,8 +44,6 @@ public class ManipulatorR implements IManipulatorEngine {
 		double coeficienteAngularAnterior = getCoeficienteAngular(pontoInicialGeo, pontoFinalGeo0);
 		double coeficienteLinearAnterior = getCoeficienteLinear(pontoInicialGeo, coeficienteAngularAnterior);
 					
-		
-		double yFinal = 0;
 		PontoGeometrico pontoGeo1 = null;
 		yFinal = coeficienteAngularAnterior;
 		
@@ -72,7 +71,6 @@ public class ManipulatorR implements IManipulatorEngine {
 
 		yFinal = yFinal + (pontoGeo1.getX() * (coeficienteLinearAnterior - coeficienteLinearFinal)) + coeficienteAngularFinal * x;
 		
-		System.out.println("AQUI ESTA O VALOR DA FUNÇÃO: "+ yFinal);
 		return null;
 	}
 	

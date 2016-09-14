@@ -5,7 +5,7 @@ public class Elements {
 	private String origem;
 	private String destino;
 	private String edge;
-	private double distance;
+	private double cost;
 		
 	public String getSource() {
 	    return this.origem;
@@ -28,10 +28,10 @@ public class Elements {
 	    this.edge = edge;
 	  }
 	
-	public double getDistance() {
-	    return this.distance;
+	public double getCost() {
+	    return this.cost;
 	  }
-	public void setDistance(double distance) {
-	    this.distance = distance;
+	public void setCost(double cost) {
+	    this.cost = cost;
 	  }
 }

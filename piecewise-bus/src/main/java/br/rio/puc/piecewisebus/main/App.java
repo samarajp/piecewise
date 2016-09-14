@@ -22,9 +22,9 @@ public class App {
 	public static void main(String[] args) throws ClassNotFoundException,
 		SQLException, IOException, PiecewiseException {
 		DAO dao = new DAO();
-		
 		List<Elements> elements = dao.getElements();
-		double[][] elementsmatrix = dao.getData(1);
+		double[][] elementsmatrix;
+		double cost;
 		
 		Grafo grafo = new Grafo();
 
@@ -33,11 +33,17 @@ public class App {
 			Vertice source = grafo.addVertice(element.getSource().trim());
 			Vertice target = grafo.addVertice(element.getTarget().trim());
 			
+			elementsmatrix = dao.getData(Integer.parseInt(element.getEdge().trim()));
+			
 			datafunction = new ManipulatorR(elementsmatrix);
 			
 			datafunction.run(8);
 			
-			grafo.addAresta(source, target, element.getEdge().trim(), element.getDistance());
+			cost = datafunction.yFinal;
+			
+			System.out.println("Custo: "+cost);
+			
+			grafo.addAresta(source, target, element.getEdge().trim(), cost);
 			
 			System.out.println(grafo);
 		}
