@@ -7,6 +7,7 @@ import java.util.List;
 import br.rio.puc.piecewisebus.dao.DAO;
 import br.rio.puc.piecewisebus.function.ManipulatorR;
 import br.rio.puc.piecewisebus.function.PiecewiseException;
+import br.rio.puc.piecewisebus.function.UpdateStreamFunction;
 import br.rio.puc.piecewisebus.model.Elements;
 import br.rio.puc.piecewisebus.model.Grafo;
 import br.rio.puc.piecewisebus.model.Vertice;
@@ -21,9 +22,15 @@ public class App {
 
 	public static void main(String[] args) throws ClassNotFoundException,
 		SQLException, IOException, PiecewiseException {
+
+		long startTime = System.nanoTime();
+
 		DAO dao = new DAO();
 		List<Elements> elements = dao.getElements();
+		
 		double[][] elementsmatrix;
+		double[][] updatefunctionelematrix;
+
 		double cost;
 		
 		Grafo grafo = new Grafo();
@@ -45,7 +52,22 @@ public class App {
 			
 			grafo.addAresta(source, target, element.getEdge().trim(), cost);
 			
-			System.out.println(grafo);
 		}
+		
+		long estimatedTime = System.nanoTime() - startTime;
+		
+		int road_id = 1;
+		
+		UpdateStreamFunction up = new UpdateStreamFunction();
+		
+		updatefunctionelematrix = up.coletaDados(estimatedTime, road_id);
+		
+		datafunction = new ManipulatorR(updatefunctionelematrix);
+		
+		datafunction.run(8);
+		
+		cost = datafunction.yFinal;
+		
+		System.out.println("Custo: "+cost);
 	}
 }
