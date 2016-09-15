@@ -62,12 +62,6 @@ public class UpdateStreamFunction {
 				matrixResult[i] = result;
 				i++;
 			}
-			
-			System.out.println("Numero de linhas: "+ size);
-
-			for (int linhas = 0; linhas < size; linhas++)
-				for (int colunas = 0; colunas < 2; colunas++)
-					System.out.println("Matriz["+linhas+"]["+colunas+"]: "+ matrixResult[linhas][colunas]);
 					
 		} catch (SQLException e) {
 			throw new PiecewiseException("[ERRO] Um erro ocorreu ao pegar as informações no DB.");

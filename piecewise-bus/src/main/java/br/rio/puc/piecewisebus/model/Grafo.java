@@ -45,19 +45,19 @@ public class Grafo {
 
 	}
 
-//	public String toString() {
-//
-//		String r = "";
-//
-//		for (Vertice u : vertices) {
-//			r += u.getNome() + " -> ";
-//			for (Aresta e : u.getAdjacents()) {
-//				Vertice v = e.getToNode();
-//				r += v.getNome() + "(" + e.getCost() + ")" + ", ";
-//			}
-//			r += "\n";
-//		}
-//		return r;
-//
-//	}
+	public String toString() {
+
+		String r = "";
+
+		for (Vertice u : vertices) {
+			r += u.getNome() + " -> ";
+			for (Aresta e : u.getAdjacents()) {
+				Vertice v = e.getToNode();
+				r += v.getNome() + "(" + e.getCost() + ")" + ", ";
+			}
+			r += "\n";
+		}
+		return r;
+
+	}
 }

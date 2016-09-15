@@ -43,14 +43,13 @@ public class App {
 			elementsmatrix = dao.getData(Integer.parseInt(element.getEdge().trim()));
 			
 			datafunction = new ManipulatorR(elementsmatrix);
-		
+			//parametro passado: hora do dia
 			datafunction.run(8);
 			
 			cost = datafunction.yFinal;
-			
-			System.out.println("Custo: "+cost);
-			
 			grafo.addAresta(source, target, element.getEdge().trim(), cost);
+			
+			System.out.println(grafo);
 			
 		}
 		
@@ -68,6 +67,6 @@ public class App {
 		
 		cost = datafunction.yFinal;
 		
-		System.out.println("Custo: "+cost);
+		System.out.println("Custo da edge que será atualizada: "+cost);
 	}
 }
