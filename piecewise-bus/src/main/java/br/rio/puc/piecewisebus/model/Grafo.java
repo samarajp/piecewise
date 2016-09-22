@@ -1,17 +1,22 @@
 package br.rio.puc.piecewisebus.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Grafo {
 
 	private Set<Vertice> vertices;
 	private Set<Aresta> arestas;
+    private final Map<Vertice, ArrayList<Aresta>> map;
 
 	public Grafo() {
 		vertices = new HashSet<Vertice>();
 		arestas = new HashSet<Aresta>();
+        this.map = new HashMap<Vertice, ArrayList<Aresta>>();
 	}
 
 	public Vertice addVertice(String nome) {
@@ -41,10 +46,31 @@ public class Grafo {
 		Aresta aresta = new Aresta(origem, destino, edge, distancia);
 		origem.addAdj(aresta);
 		arestas.add(aresta);
+		
+		addToMap(origem, aresta);
+		
 		return aresta;
-
 	}
+	
+	private void addToMap (Vertice node, Aresta edge) {
+        if (map.containsKey(node)) {
+            List<Aresta> l = map.get(node);
+            l.add(edge);
+        } else  {
+            List<Aresta> l = new ArrayList<Aresta>();
+            l.add(edge);
+            map.put(node, (ArrayList<Aresta>) l);
+        }  
+    }
+	
+	public List<Aresta> getAdj(Vertice node) {
+        return map.get(node);
+    }
 
+    public Map<Vertice, ArrayList<Aresta>> getGraph() {
+        return map;
+    }
+	
 	public String toString() {
 
 		String r = "";
@@ -60,4 +86,5 @@ public class Grafo {
 		return r;
 
 	}
+
 }

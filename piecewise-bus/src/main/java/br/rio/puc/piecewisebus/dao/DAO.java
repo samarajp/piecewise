@@ -52,7 +52,7 @@ public class DAO {
 		return elements;
 	}
 	
-public double[][] getData(int edge_id) throws PiecewiseException {
+   public double[][] getData(int edge_id) throws PiecewiseException {
 		
 		Connection connectionJDBC = null;
 		try {
@@ -94,6 +94,40 @@ public double[][] getData(int edge_id) throws PiecewiseException {
 		
 		
 		return matrixResult;
+	}
+   
+   public List<Elements> getDataTeste() throws PiecewiseException, ClassNotFoundException, SQLException, IOException {
+		
+	   List<Elements> elements = new ArrayList<Elements>();
+		Connection connetion = ConnectionJDBC.getConnection();
+		ResultSet rs = null;
+
+		try {
+
+			PreparedStatement sql = connetion
+					.prepareStatement("SELECT source, target, cost FROM testdij");
+			rs = sql.executeQuery();
+			
+			while (rs.next()) {
+				Elements element = new Elements();
+
+				element.setSource(rs.getString("source"));
+				element.setTarget(rs.getString("target"));
+				element.setDistance(rs.getDouble("cost"));
+				
+				elements.add(element);
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.err.print(e.getMessage());
+			System.err.print("[ERRO] UM ERRO OCORREU QUANDO OS ELEMENTOS ESTAVAM SENDO CAPTURADOS");
+			System.err.print(e.getMessage());
+		}
+
+		connetion.close();
+		return elements;
 	}
 	
 }
