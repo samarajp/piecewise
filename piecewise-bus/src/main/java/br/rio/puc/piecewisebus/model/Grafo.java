@@ -70,6 +70,14 @@ public class Grafo {
     public Map<Vertice, ArrayList<Aresta>> getGraph() {
         return map;
     }
+    
+    public Set<Vertice> getVertexes() {
+	    return vertices;
+	  }
+
+	  public Set<Aresta> getEdges() {
+	    return arestas;
+	  }
 	
 	public String toString() {
 
