@@ -6,10 +6,18 @@ import java.util.List;
 public class Vertice {
 
 	private String nome;
+	private int no;
+
 	private List<Aresta> adj;
+    private double distance = Double.MAX_VALUE;
 
 	public Vertice(String nome) {
 		this.nome = nome;
+		this.adj = new ArrayList<Aresta>();
+	}
+	
+	public Vertice(int no) {
+		this.no = no;
 		this.adj = new ArrayList<Aresta>();
 	}
 
@@ -27,7 +35,7 @@ public class Vertice {
 
 	public Double getCostToNode(String nome) {
 		for (Aresta e : adj) {
-			if (nome.equals(e.getToNode()))
+			if (nome.equals(e.getToNode().getNome()))
 				return e.getCost();
 		}
 		return null;
@@ -57,4 +65,12 @@ public class Vertice {
 	public String toString() {
 		return this.nome;
 	}
+	
+	public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
 }

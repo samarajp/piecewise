@@ -30,7 +30,9 @@ public class ConnectionJDBC {
 			String user = properties.getProperty(STR_USER);
 			String password = properties.getProperty(STR_PASS);
 			
+//			connection = DriverManager.getConnection(host, user, password);
 			connection = DriverManager.getConnection("jdbc:postgresql://localhost:5433/Teste", "postgres", "postgres");
+
 		}
 
 		return connection;

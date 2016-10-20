@@ -1,6 +1,5 @@
 package br.rio.puc.piecewisebus.model;
 
-
 public class Aresta {
 	
 	private Vertice source;
@@ -51,4 +50,5 @@ public class Aresta {
 	public String toString() {
 		return this.source + " , " + this.target;
 	}
+		
 }
