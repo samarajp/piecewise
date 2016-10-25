@@ -189,7 +189,7 @@ public class DAO {
 			while (resultSet.next()) {
 				elementTS.setStartTime(resultSet.getDouble("min_time"));
 				elementTS.setEndTime(resultSet.getDouble("max_time"));
-				elementTS.setMiddleTime(resultSet.getDouble("max_time") - resultSet.getDouble("min_time"));
+				elementTS.setMiddleTime(resultSet.getDouble("min_time") + ((resultSet.getDouble("max_time") - resultSet.getDouble("min_time")) / 2));
 			}
 				
 	
