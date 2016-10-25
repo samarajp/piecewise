@@ -61,6 +61,22 @@ public class Estatistica {
             return Math.sqrt(getVariancia());
 
       }
+      
+      // Nova Variância Amostral
+      public double getNewVariancia(double old_variace, double new_variance) {
+
+    	    return (old_variace + ((new_variance - old_variace) / Double.valueOf(array.length)));
+
+      }
+
+      // Novo Desvio Padrão Amostral
+      public double getNewDesvioPadrao(double old_variace, double new_variance, double old_desviopadrao) {
+
+            return Math.sqrt( (1 - (1 / Double.valueOf(array.length))) * Math.pow(old_desviopadrao, 2) + 
+            		(Double.valueOf(array.length) + 1) * Math.pow((new_variance - old_variace), 2));
+
+
+      }
 
       public double[] getArray() {
 

@@ -16,6 +16,7 @@ public class ElementsTimestamp {
 	public Double getMiddleTime() {
 	    return this.middle_time;
 	  }
+	
 	public void setMiddleTime(double middle_time) {
 	    this.middle_time = middle_time;
 	  }
