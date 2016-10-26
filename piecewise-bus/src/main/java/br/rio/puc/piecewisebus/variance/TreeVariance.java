@@ -3,7 +3,8 @@ package br.rio.puc.piecewisebus.variance;
 public class TreeVariance {
 	private double middle_time;
 	private double function;
-	private double variance;
+	private double media;
+	private double variancia;
 	private double standard_deviation;
 	private double end_time;
 
@@ -22,11 +23,18 @@ public class TreeVariance {
 	    this.function = function;
 	  }
 	
-	public Double getVariance() {
-	    return this.variance;
+	public Double getMedia() {
+	    return this.media;
 	  }
-	public void setVariance(double variance) {
-	    this.variance = variance;
+	public void setMedia(double media) {
+	    this.media = media;
+	  }
+	
+	public Double getVariancia() {
+	    return this.variancia;
+	  }
+	public void setVariancia(double variancia) {
+	    this.variancia = variancia;
 	  }
 	
 	public Double getStandardDeviation() {

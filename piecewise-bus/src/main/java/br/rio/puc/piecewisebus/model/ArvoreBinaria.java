@@ -72,7 +72,7 @@ public class ArvoreBinaria {
 
         System.out.println("\nMiddleTime: " + this.raiz.getElements().getMiddleTime());
         System.out.println("Function: " + this.raiz.getElements().getFunction());
-        System.out.println("Variance: " + this.raiz.getElements().getVariance());
+        System.out.println("Media: " + this.raiz.getElements().getMedia());
         System.out.println("Standard Deviation: " + this.raiz.getElements().getStandardDeviation());
         
         if (this.arvoreDireita != null) {
@@ -87,7 +87,7 @@ public class ArvoreBinaria {
 
         System.out.println("\nMiddleTime: " + this.raiz.getElements().getMiddleTime());
         System.out.println("Function: " + this.raiz.getElements().getFunction());
-        System.out.println("Variance: " + this.raiz.getElements().getVariance());
+        System.out.println("Media: " + this.raiz.getElements().getMedia());
         System.out.println("Standard Deviation: " + this.raiz.getElements().getStandardDeviation());
        
         if (this.arvoreEsquerda != null) {
@@ -114,7 +114,7 @@ public class ArvoreBinaria {
 
         System.out.println("\nMiddleTime: " + this.raiz.getElements().getMiddleTime());
         System.out.println("Function: " + this.raiz.getElements().getFunction());
-        System.out.println("Variance: " + this.raiz.getElements().getVariance());
+        System.out.println("Media: " + this.raiz.getElements().getMedia());
         System.out.println("Standard Deviation: " + this.raiz.getElements().getStandardDeviation());
        
     }

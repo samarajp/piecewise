@@ -29,32 +29,49 @@ public class Client {
              ElementsTimestamp time = dao.getMaxMinTimeValue(Integer.parseInt("1"));
              
              if (arvore.getRaiz() == null){
-	             //Construção do nó raiz
+            	 
+            	 //Construção do nó raiz
 		    	 TreeVariance tree = new TreeVariance();
 		    	 tree.setMiddleTime(time.getMiddleTime());
 		    	 tree.setFunction(e.getVariancia());
-		    	 tree.setVariance(e.getVariancia());
+		    	 tree.setMedia(e.getMedia());
+		    	 tree.setVariancia(e.getVariancia());
 		    	 tree.setStandardDeviation(e.getDesvioPadrao());
 		    	 tree.setEndTime(time.getEndTime());
 		    	 
 		    	 arvore.insereBusData(tree);
-	    	 
+
              }
+             
+    		 System.out.println("criou raiz");
+
+	    	 arvore.percorrerInOrder();
+
+    		 System.out.println("fim criacao da raiz");
+
 	    	
 	    	 /**
 	    	  * Recebendo um novo DS, dada uma janela de tempo
 	    	  * Expandindo a Árvore
 	    	  */
 	    	 double new_timewindow = time.getStartTime(); //Valor pode mudar
-	    	 double antigavariancia = e.getVariancia();
+	    	 double antigamedia = e.getMedia();
 	    	 double antigoDP = e.getDesvioPadrao();
-	    	 double tolerance = (e.getVariancia() - antigavariancia) / antigoDP;
+	    	 double tolerance = (e.getVariancia() - antigamedia) / antigoDP;
+	    	 
+    		 System.out.println("new_timewindow: "+ new_timewindow);
+    		 System.out.println("antigamedia: "+ antigamedia);
+    		 System.out.println("antigoDP: "+ antigoDP);
+    		 System.out.println("tolerance: "+ tolerance);
 
-	    	 if (new_timewindow < time.getMiddleTime()){
-	    		 arvore.insereBusData(updateEsq(time.getStartTime(), time.getMiddleTime(), tolerance, antigavariancia, antigoDP));
+
+	    	 if (new_timewindow < time.getMiddleTime() ){
+	    		 System.out.println("criando no a esquerda");
+	    		 arvore.insereBusData(updateEsq(time.getStartTime(), time.getMiddleTime(), tolerance, antigamedia, antigoDP));
 	    	 }
 	    	 else{
-	    		 arvore.insereBusData(updateDir(time.getMiddleTime(), time.getEndTime(), tolerance, antigavariancia, antigoDP));
+	    		 System.out.println("criando no a direita");
+	    		 arvore.insereBusData(updateDir(time.getMiddleTime(), time.getEndTime(), tolerance, antigamedia, antigoDP));
 	    	 }
 	    	 
 	    	 arvore.percorrerInOrder();
@@ -63,7 +80,7 @@ public class Client {
 	     }
 	     
 	     public static TreeVariance updateEsq(double startTime, double middleTime, double tolerance,
-	    		 double antigavariancia, double antigoDP) throws NumberFormatException, ClassNotFoundException, PiecewiseException, SQLException, IOException{
+	    		 double antigamedia, double antigoDP) throws NumberFormatException, ClassNotFoundException, PiecewiseException, SQLException, IOException{
 	    	 DAO dao = new DAO();
 	    	 Estatistica e = new Estatistica();
 	    	 TreeVariance tree = new TreeVariance();
@@ -74,12 +91,17 @@ public class Client {
 	      
 	         double middle_time = startTime + ((middleTime - startTime) /2);
 	         
+    		 System.out.println("Entrou aqui 1");
+
 	         if (tolerance < e.getDesvioPadrao()){
+	    		 System.out.println("Entrou aqui 2");
+
  		    	 //Valor da Variância precisa ser atualizado para verificar se criação de novo nó é necessária.
 		    	 tree.setMiddleTime(middle_time);
 		    	 tree.setFunction(e.getVariancia());
-		    	 tree.setVariance(e.getNewVariancia(antigavariancia, e.getVariancia()));
-		    	 tree.setStandardDeviation(e.getNewDesvioPadrao(antigavariancia, e.getVariancia(), antigoDP));
+		    	 tree.setVariancia(e.getVariancia());
+		    	 tree.setMedia(e.getNewMedia(antigamedia, e.getMedia()));
+		    	 tree.setStandardDeviation(e.getNewDesvioPadrao(antigamedia, e.getMedia(), antigoDP));
 		    	 tree.setEndTime(middleTime);
 		     }
 	         
@@ -87,7 +109,7 @@ public class Client {
 	     }
 
 	     public static TreeVariance updateDir(double middleTime, double endTime, double tolerance,
-	    		 double antigavariancia, double antigoDP) throws NumberFormatException, ClassNotFoundException, PiecewiseException, SQLException, IOException{
+	    		 double antigamedia, double antigoDP) throws NumberFormatException, ClassNotFoundException, PiecewiseException, SQLException, IOException{
 	    	 DAO dao = new DAO();
 	    	 Estatistica e = new Estatistica();
 	    	 TreeVariance tree = new TreeVariance();
@@ -99,11 +121,15 @@ public class Client {
 	         double middle_time = middleTime + ((endTime - middleTime) /2);
 
 	         if (tolerance > e.getDesvioPadrao()){
+	        	 
+	    		 System.out.println("Entrou aqui 3");
+
  		    	 //Valor da Variância precisa ser atualizado para verificar se criação de novo nó é necessária.
 		    	 tree.setMiddleTime(middle_time);
 		    	 tree.setFunction(e.getVariancia());
-		    	 tree.setVariance(e.getNewVariancia(antigavariancia, e.getVariancia()));
-		    	 tree.setStandardDeviation(e.getNewDesvioPadrao(antigavariancia, e.getVariancia(), antigoDP));
+		    	 tree.setVariancia(e.getVariancia());
+		    	 tree.setMedia(e.getNewMedia(antigamedia, e.getMedia()));
+		    	 tree.setStandardDeviation(e.getNewDesvioPadrao(antigamedia, e.getVariancia(), antigoDP));
 		    	 tree.setEndTime(endTime);
 		     }
 	         

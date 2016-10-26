@@ -54,7 +54,20 @@ public class Estatistica {
             return p1 * p2;
 
       }
+      
+    
+      public double getMedia() {
 
+    	  double media = 0;
+    	  
+    	  for (int i = 0; i < array.length; i++) {
+			media += array[i];    
+    	  }
+
+          return (media/array.length);
+
+      }
+      
       // Desvio Padrão Amostral
       public double getDesvioPadrao() {
 
@@ -62,18 +75,18 @@ public class Estatistica {
 
       }
       
-      // Nova Variância Amostral
-      public double getNewVariancia(double old_variace, double new_variance) {
+      // Nova Media
+      public double getNewMedia(double old_media, double new_media) {
 
-    	    return (old_variace + ((new_variance - old_variace) / Double.valueOf(array.length)));
+    	    return (old_media + ((new_media - old_media) / Double.valueOf(array.length)));
 
       }
 
       // Novo Desvio Padrão Amostral
-      public double getNewDesvioPadrao(double old_variace, double new_variance, double old_desviopadrao) {
+      public double getNewDesvioPadrao(double old_media, double new_media, double old_desviopadrao) {
 
             return Math.sqrt( (1 - (1 / Double.valueOf(array.length))) * Math.pow(old_desviopadrao, 2) + 
-            		(Double.valueOf(array.length) + 1) * Math.pow((new_variance - old_variace), 2));
+            		(Double.valueOf(array.length) + 1) * Math.pow((new_media - old_media), 2));
 
 
       }
