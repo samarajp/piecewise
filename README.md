@@ -14,5 +14,3 @@ Output: function
 8.      Enquanto (desvio_padrao > tolerancia) faça
 9.          Cria_No (x0, media, variancia, desvio_padrao);
 10.         update_G(timestamp, start_time, end_time, gama_value);
-<\code><\pre>
-<\p>
