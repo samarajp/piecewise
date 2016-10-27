@@ -39,7 +39,7 @@ public class Client {
 		    	 tree.setStandardDeviation(e.getDesvioPadrao());
 		    	 tree.setEndTime(time.getEndTime());
 		    	 
-		    	 arvore.insereBusData(tree);
+		  //  	 arvore.insereBusData(tree);
 
              }
              
@@ -67,11 +67,11 @@ public class Client {
 
 	    	 if (new_timewindow < time.getMiddleTime() ){
 	    		 System.out.println("criando no a esquerda");
-	    		 arvore.insereBusData(updateEsq(time.getStartTime(), time.getMiddleTime(), tolerance, antigamedia, antigoDP));
+	   // 		 arvore.insereBusData(updateEsq(time.getStartTime(), time.getMiddleTime(), tolerance, antigamedia, antigoDP));
 	    	 }
 	    	 else{
 	    		 System.out.println("criando no a direita");
-	    		 arvore.insereBusData(updateDir(time.getMiddleTime(), time.getEndTime(), tolerance, antigamedia, antigoDP));
+	    //		 arvore.insereBusData(updateDir(time.getMiddleTime(), time.getEndTime(), tolerance, antigamedia, antigoDP));
 	    	 }
 	    	 
 	    	 arvore.percorrerInOrder();
@@ -129,7 +129,7 @@ public class Client {
 		    	 tree.setFunction(e.getVariancia());
 		    	 tree.setVariancia(e.getVariancia());
 		    	 tree.setMedia(e.getNewMedia(antigamedia, e.getMedia()));
-		    	 tree.setStandardDeviation(e.getNewDesvioPadrao(antigamedia, e.getVariancia(), antigoDP));
+		    	 tree.setStandardDeviation(e.getNewDesvioPadrao(antigamedia, e.getMedia(), antigoDP));
 		    	 tree.setEndTime(endTime);
 		     }
 	         

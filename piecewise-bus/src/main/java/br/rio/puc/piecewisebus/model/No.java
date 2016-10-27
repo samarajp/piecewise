@@ -1,19 +1,20 @@
 package br.rio.puc.piecewisebus.model;
 
+import br.rio.puc.piecewisebus.estimator.TreeEstimator;
 import br.rio.puc.piecewisebus.variance.TreeVariance;
 
 public class No {
-    TreeVariance busdata;
+	TreeEstimator busdata;
 
-    public No(TreeVariance busdata) {
+    public No(TreeEstimator busdata) {
         this.busdata = busdata;
     }
 
-    public TreeVariance getElements() {
+    public TreeEstimator getElements() {
         return busdata;
     }
 
-    public void setElements(TreeVariance busdata) {
+    public void setElements(TreeEstimator busdata) {
         this.busdata = busdata;
     }
 }

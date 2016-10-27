@@ -107,7 +107,7 @@ public class DAO {
 			
 			resultSet = statement.executeQuery("select gf.totaltime from generatorfunction gf, grafoteste gt "
 					+ "where gf.idedge = gt.road_id and gf.idedge = " + edge_id +" "
-							+ "and gf.timeday < " + middle_time +";");
+							+ "and gf.timeday <= " + middle_time +";");
 						
 			resultSet.last();
 			int size = resultSet.getRow();

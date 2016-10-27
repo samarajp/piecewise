@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.rio.puc.piecewisebus.variance.TreeVariance;
 import br.rio.puc.piecewisebus.dao.DAO;
+import br.rio.puc.piecewisebus.estimator.TreeEstimator;
 
 public class ArvoreBinaria {
     
@@ -37,14 +38,13 @@ public class ArvoreBinaria {
         this.raiz = raiz;
     }
 
-    public void insereBusData(TreeVariance tree_list) {
+    public void insereBusData(TreeEstimator tree_list) {
         No no = new No(tree_list);
         inserir(no);
     }
 
     public void inserir(No no) {
         if (this.raiz == null) {
-        	no.busdata.setFunction(updateFunctionValue(no.busdata.getFunction(), no.busdata.getMiddleTime(), no.busdata.getEndTime()));
         	this.raiz = no;
         } else {
             if (no.getElements().getMiddleTime() > this.raiz.getElements().getMiddleTime()) {
@@ -119,7 +119,7 @@ public class ArvoreBinaria {
        
     }
 
-    public TreeVariance busca(double timestamp) {
+    public TreeEstimator busca(double timestamp) {
         if (this.raiz == null) {
             return null;
         } else {
@@ -139,14 +139,6 @@ public class ArvoreBinaria {
                 }
             }
         }
-    }
-    
-    public double updateFunctionValue(double variance, double middle_time, double end_time) {
-    	double epsilon = -0.5;
-    	double distance = end_time - middle_time;
-    	double G_function = variance * (1 / (1 + (Math.pow(Math.E, (epsilon * distance)))));
-    	
-    	return G_function;
     }
        
 }
