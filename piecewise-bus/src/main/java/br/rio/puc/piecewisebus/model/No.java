@@ -1,7 +1,6 @@
 package br.rio.puc.piecewisebus.model;
 
 import br.rio.puc.piecewisebus.estimator.TreeEstimator;
-import br.rio.puc.piecewisebus.variance.TreeVariance;
 
 public class No {
 	TreeEstimator busdata;

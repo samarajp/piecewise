@@ -1,9 +1,5 @@
 package br.rio.puc.piecewisebus.model;
 
-import java.util.List;
-
-import br.rio.puc.piecewisebus.variance.TreeVariance;
-import br.rio.puc.piecewisebus.dao.DAO;
 import br.rio.puc.piecewisebus.estimator.TreeEstimator;
 
 public class ArvoreBinaria {
